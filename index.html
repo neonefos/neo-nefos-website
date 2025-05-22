@@ -5,28 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Neo Nefos Movement</title>
   <link href="style.css" rel="stylesheet">
+  <!-- Preload font dan aset kritis -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Header dengan logo baru -->
   <header>
-    <h1>NEO NEFOS MOVEMENT</h1>
+    <!-- Logo dalam format WebP untuk optimasi -->
+    <img src="img/logoneonefos1.webp" alt="Logo Neo Nefos" class="logo" loading="lazy">
     <nav>
-      <a href="#tentang">Tentang</a>
-      <a href="#mandala">Mandala</a>
+      <a href="#about">Tentang</a>
+      <a href="#mandala">Proyek Mandala</a>
     </nav>
   </header>
 
+  <!-- Hero Section dengan video rotator -->
   <section class="hero">
-    <video autoplay muted loop>
-      <source src="img/hero-video.mp4" type="video/mp4">
+    <!-- Video utama dengan fallback ke gambar -->
+    <video autoplay muted loop id="bgVideo">
+      <source src="img/hero-1.webm" type="video/webm">
+      <!-- Fallback untuk browser yang tidak support WebM -->
+      <img src="img/fallback.webp" alt="Neo Nefos Movement">
     </video>
-    <div class="hero-text">
-      <h2>GLOBAL SOLIDARITY FOR PEOPLE'S LIBERATION</h2>
+    
+    <div class="hero-content">
+      <h1>GLOBAL SOLIDARITY FOR PEOPLE'S LIBERATION</h1>
       <a href="#join" class="btn">Gabung Gerakan</a>
     </div>
   </section>
 
+  <!-- Ticker/Running Text -->
   <div class="ticker">
     <marquee>#BersamaNefos • Seni Melawan Ketimpangan • Solidaritas Global South</marquee>
   </div>
+
+  <!-- Script untuk rotasi video (opsional) -->
+  <script>
+    // Daftar video yang akan dirotasi
+    const videos = [
+      "img/hero-1.webm",
+      "img/hero-2.webm",
+      "img/hero-3.webm",
+      "img/hero-4.webm",
+      "img/hero-5.webm"
+    ];
+    
+    let currentVideo = 0;
+    const videoElement = document.getElementById('bgVideo');
+    
+    function changeVideo() {
+      currentVideo = (currentVideo + 1) % videos.length;
+      videoElement.src = videos[currentVideo];
+      videoElement.load(); // Memuat video baru
+    }
+    
+    // Ganti video setiap 30 detik (30000ms)
+    setInterval(changeVideo, 30000);
+  </script>
 </body>
 </html>
