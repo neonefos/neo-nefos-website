@@ -1,13 +1,28 @@
+:root {
+  --primary: #1D3557;
+  --accent: #E63946;
+  --gold: #FFD700;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
+
 .hero {
-  background: #1D3557;
-  color: white;
+  position: relative;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  overflow: hidden;
+}
+
+.hero video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ticker {
+  background: var(--gold);
+  padding: 10px;
+  font-weight: bold;
 }
