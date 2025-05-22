@@ -1,1 +1,27 @@
-
+{
+  "name": "Neo Nefos Movement",
+  "short_name": "NeoNefos",
+  "description": "Gerakan seni dan solidaritas Global South melawan ketimpangan struktural",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1D3557",
+  "theme_color": "#E63946",
+  "icons": [
+    {
+      "src": "img/icons/icon-72x72.webp",
+      "sizes": "72x72",
+      "type": "image/webp"
+    },
+    {
+      "src": "img/icons/icon-192x192.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "img/icons/icon-512x512.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ],
+  "orientation": "portrait-primary"
+}
