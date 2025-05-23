@@ -6,7 +6,7 @@
   <title>Neo Nefos Movement</title>
   
   <!-- CSS -->
-  <link href="/css/style.css" rel="stylesheet"> <!-- Path diperbaiki -->
+  <link href="/css/style.css" rel="stylesheet">
   
   <!-- Preload font dan aset kritis -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,27 +18,60 @@
   <meta name="theme-color" content="#E63946">
   
   <!-- Favicon -->
-  <link rel="icon" href="/img/icons/icon-192x192.webp" type="image/webp"> <!-- Gunakan ikon PWA -->
-  <link rel="apple-touch-icon" href="/img/icons/icon-192x192.webp"> <!-- Apple Touch Icon -->
+  <link rel="icon" href="/img/icons/icon-192x192.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="/img/icons/icon-192x192.webp">
 
-  <!-- Hapus duplikasi meta theme-color dan manifest -->
+  <style>
+    /* Hero Video Styles */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background: url('/img/fallback.webp') center/cover no-repeat;
+    }
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transition: opacity 1s ease;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      /* Your existing hero content styles */
+    }
+    .video-fallback {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+  </style>
 </head>
 <body>
   <!-- Header dengan logo baru -->
   <header>
-    <img src="/img/logoneonefos1.webp" alt="Logo Neo Nefos" class="logo" loading="lazy"> <!-- Tambah slash -->
+    <img src="/img/logoneonefos1.webp" alt="Logo Neo Nefos" class="logo" loading="lazy">
     <nav>
       <a href="#about">Tentang</a>
       <a href="#mandala">Proyek Mandala</a>
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section - Diperbarui -->
   <section class="hero">
-    <video autoplay muted loop id="bgVideo">
-      <source src="/img/hero-1.webm" type="video/webm"> <!-- Tambah slash -->
-      <img src="/img/fallback.webp" alt="Neo Nefos Movement"> <!-- Tambah slash -->
+    <!-- Video Container dengan Fallback -->
+    <video autoplay muted loop playsinline id="bgVideo" poster="/img/fallback.webp">
+      <!-- Sources will be added by JavaScript -->
     </video>
+    <img src="/img/fallback.webp" alt="Neo Nefos Movement" class="video-fallback" id="videoFallback">
     
     <div class="hero-content">
       <h1>GLOBAL SOLIDARITY FOR PEOPLE'S LIBERATION</h1>
@@ -51,29 +84,103 @@
     <marquee>#BersamaNefos • Seni Melawan Ketimpangan • Solidaritas Global South</marquee>
   </div>
 
-  <!-- Script untuk rotasi video -->
+  <!-- Script untuk rotasi video yang diperbarui -->
   <script>
-    const videos = [
-      "/img/hero-1.webm",  // Semua path ditambahkan slash
-      "/img/hero-2.webm",
-      "/img/hero-3.webm",
-      "/img/hero-4.webm",
-      "/img/hero-5.webm"
+    // Konfigurasi Video
+    const videoAssets = [
+      {
+        webm: '/img/hero-1.webm',
+        mp4: '/img/hero-1.mp4'
+      },
+      {
+        webm: '/img/hero-2.webm',
+        mp4: '/img/hero-2.mp4'
+      },
+      {
+        webm: '/img/hero-3.webm',
+        mp4: '/img/hero-3.mp4'
+      },
+      {
+        webm: '/img/hero-4.webm',
+        mp4: '/img/hero-4.mp4'
+      },
+      {
+        webm: '/img/hero-5.webm',
+        mp4: '/img/hero-5.mp4'
+      }
     ];
-    
-    let currentVideo = 0;
+
     const videoElement = document.getElementById('bgVideo');
-    
-    function changeVideo() {
-      currentVideo = (currentVideo + 1) % videos.length;
-      videoElement.src = videos[currentVideo];
+    const fallbackImage = document.getElementById('videoFallback');
+    let currentVideoIndex = 0;
+
+    // Fungsi untuk memuat video
+    function loadVideo() {
+      const video = videoAssets[currentVideoIndex];
+      
+      // Kosongkan sumber video sebelumnya
+      while (videoElement.firstChild) {
+        videoElement.removeChild(videoElement.firstChild);
+      }
+
+      // Tambahkan sumber baru (prioritaskan WebM)
+      const webmSource = document.createElement('source');
+      webmSource.src = video.webm;
+      webmSource.type = 'video/webm';
+
+      const mp4Source = document.createElement('source');
+      mp4Source.src = video.mp4;
+      mp4Source.type = 'video/mp4';
+
+      videoElement.appendChild(webmSource);
+      videoElement.appendChild(mp4Source);
+      
+      // Coba memutar video
       videoElement.load();
+      
+      const playPromise = videoElement.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.catch(e => {
+          console.error('Autoplay blocked:', e);
+          showFallback();
+        });
+      }
     }
-    
-    setInterval(changeVideo, 30000);
+
+    // Fallback handling
+    function showFallback() {
+      videoElement.style.display = 'none';
+      fallbackImage.style.display = 'block';
+    }
+
+    // Error handling
+    videoElement.addEventListener('error', () => {
+      console.error('Video error:', videoElement.error);
+      showFallback();
+      rotateVideo();
+    });
+
+    // Rotasi video setiap 30 detik
+    function rotateVideo() {
+      currentVideoIndex = (currentVideoIndex + 1) % videoAssets.length;
+      loadVideo();
+    }
+
+    // Mulai rotasi
+    document.addEventListener('DOMContentLoaded', () => {
+      loadVideo();
+      setInterval(rotateVideo, 30000);
+      
+      // Deteksi dukungan format video
+      const testVideo = document.createElement('video');
+      if (!testVideo.canPlayType('video/webm') && !testVideo.canPlayType('video/mp4')) {
+        showFallback();
+      }
+    });
   </script>
 
   <!-- JavaScript -->
-  <script src="/js/script.js" defer></script> <!-- Path diperbaiki dan tambah defer -->
+  <script src="/js/script.js" defer></script>
 </body>
 </html>
