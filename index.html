@@ -4,40 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Neo Nefos Movement</title>
-  <link href="style.css" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link href="/css/style.css" rel="stylesheet"> <!-- Path diperbaiki -->
+  
   <!-- Preload font dan aset kritis -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-<!-- Tambahkan manifest.json ini -->
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#E63946">
- <!-- Favicon -->
-  <link rel="icon" href="/img/icons/favicon.webp" type="image/webp">
-    <!-- Apple Touch Icon -->
-  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.webp">
-    <!-- Web Manifest -->
-  <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials">
+
+  <!-- PWA Meta -->
+  <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#E63946">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/img/icons/icon-192x192.webp" type="image/webp"> <!-- Gunakan ikon PWA -->
+  <link rel="apple-touch-icon" href="/img/icons/icon-192x192.webp"> <!-- Apple Touch Icon -->
+
+  <!-- Hapus duplikasi meta theme-color dan manifest -->
 </head>
 <body>
   <!-- Header dengan logo baru -->
   <header>
-    <!-- Logo dalam format WebP untuk optimasi -->
-    <img src="img/logoneonefos1.webp" alt="Logo Neo Nefos" class="logo" loading="lazy">
+    <img src="/img/logoneonefos1.webp" alt="Logo Neo Nefos" class="logo" loading="lazy"> <!-- Tambah slash -->
     <nav>
       <a href="#about">Tentang</a>
       <a href="#mandala">Proyek Mandala</a>
     </nav>
   </header>
 
-  <!-- Hero Section dengan video rotator -->
+  <!-- Hero Section -->
   <section class="hero">
-    <!-- Video utama dengan fallback ke gambar -->
     <video autoplay muted loop id="bgVideo">
-      <source src="img/hero-1.webm" type="video/webm">
-      <!-- Fallback untuk browser yang tidak support WebM -->
-      <img src="img/fallback.webp" alt="Neo Nefos Movement">
+      <source src="/img/hero-1.webm" type="video/webm"> <!-- Tambah slash -->
+      <img src="/img/fallback.webp" alt="Neo Nefos Movement"> <!-- Tambah slash -->
     </video>
     
     <div class="hero-content">
@@ -51,15 +51,14 @@
     <marquee>#BersamaNefos • Seni Melawan Ketimpangan • Solidaritas Global South</marquee>
   </div>
 
-  <!-- Script untuk rotasi video (opsional) -->
+  <!-- Script untuk rotasi video -->
   <script>
-    // Daftar video yang akan dirotasi
     const videos = [
-      "img/hero-1.webm",
-      "img/hero-2.webm",
-      "img/hero-3.webm",
-      "img/hero-4.webm",
-      "img/hero-5.webm"
+      "/img/hero-1.webm",  // Semua path ditambahkan slash
+      "/img/hero-2.webm",
+      "/img/hero-3.webm",
+      "/img/hero-4.webm",
+      "/img/hero-5.webm"
     ];
     
     let currentVideo = 0;
@@ -68,14 +67,13 @@
     function changeVideo() {
       currentVideo = (currentVideo + 1) % videos.length;
       videoElement.src = videos[currentVideo];
-      videoElement.load(); // Memuat video baru
+      videoElement.load();
     }
     
-    // Ganti video setiap 30 detik (30000ms)
     setInterval(changeVideo, 30000);
   </script>
-<!-- Tambahkan sebelum </body> -->
-<script src="script.js"></script>
 
+  <!-- JavaScript -->
+  <script src="/js/script.js" defer></script> <!-- Path diperbaiki dan tambah defer -->
 </body>
 </html>
