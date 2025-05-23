@@ -14,19 +14,19 @@ let currentVideo = 0;
 function loadVideo() {
   const video = videos[currentVideo];
   videoElement.innerHTML = '';
-  
+
   const webmSource = document.createElement('source');
   webmSource.src = video.webm;
   webmSource.type = 'video/webm';
-  
+
   const mp4Source = document.createElement('source');
   mp4Source.src = video.mp4;
   mp4Source.type = 'video/mp4';
-  
+
   videoElement.appendChild(webmSource);
   videoElement.appendChild(mp4Source);
   videoElement.load();
-  
+
   videoElement.play().catch(e => {
     console.error('Autoplay blocked:', e);
     fallbackImage.style.display = 'block';
@@ -36,31 +36,35 @@ function loadVideo() {
 function rotateVideo() {
   currentVideo = (currentVideo + 1) % videos.length;
   loadVideo();
-  
+
   // Preload next video
   const nextVideo = document.createElement('video');
   const next = videos[(currentVideo + 1) % videos.length];
   nextVideo.src = next.webm;
 }
 
-// ===== DYNAMIC TICKER (Menggunakan JSON lokal) =====
-async function loadTickerContent() {
+// ===== DYNAMIC TICKER (Google Sheets versi) =====
+async function updateTicker() {
+  const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTMKd71tirLvjqXyQ34fHLYITCkFl0AE2axtQ2VkIBWByg-aP-R2ELdWhRUSwg3X9iJQ1aGhEx_zAMk/gviz/tq?tqx=out:json";
+
   try {
-    const response = await fetch('/data/ticker.json');
-    const data = await response.json();
+    const response = await fetch(SHEET_URL);
+    const text = await response.text();
+    const json = JSON.parse(text.substr(47).slice(0, -2));
+    const rows = json.table.rows;
+    const messages = rows.map(r => r.c[0]?.v).filter(Boolean);
+
     const ticker = document.querySelector('.ticker marquee');
-    ticker.innerHTML = data.messages.map(msg => 
-      `<span class="ticker-item">${msg.text}</span>`
-    ).join(' • ');
+    ticker.innerHTML = messages.map(msg => 
+      `<span class="ticker-item">${msg}</span>`).join(' • ');
   } catch (error) {
-    console.error('Gagal load ticker:', error);
-    // Fallback default
+    console.error("Ticker gagal dimuat:", error);
     document.querySelector('.ticker marquee').innerHTML = 
       '#BersamaNefos • Solidaritas Global South • Seni Pembebasan';
   }
 }
 
-// ===== SERVICE WORKER =====
+// ===== SERVICE WORKER (PWA) =====
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
@@ -69,9 +73,9 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// ===== INITIALIZE =====
+// ===== INITIALIZE ALL =====
 document.addEventListener('DOMContentLoaded', () => {
   loadVideo();
   setInterval(rotateVideo, 30000);
-  loadTickerContent();
+  updateTicker();
 });
