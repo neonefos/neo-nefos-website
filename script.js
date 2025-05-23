@@ -11,7 +11,9 @@
 const videos = [
   "img/hero-1.webm",
   "img/hero-2.webm", 
-  "img/hero-3.webm"
+  "img/hero-3.webm",
+  "img/hero-4.webm",
+  "img/hero-5.webm"
 ];
 
 const videoElement = document.getElementById('bgVideo');
