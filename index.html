@@ -1,46 +1,80 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neo Nefos Movement</title>
-  <!-- Preload Assets -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="/img/hero-1.webm" as="video" type="video/webm">
-  <link rel="preload" href="/img/fallback.webp" as="image" type="image/webp">
-  <!-- CSS -->
-  <link href="/css/style.css" rel="stylesheet">
-  <!-- PWA Meta -->
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#E63946">
-  <!-- Favicon -->
-  <link rel="icon" href="/img/icons/icon-192x192.webp" type="image/webp">
-  <link rel="apple-touch-icon" href="/img/icons/icon-192x192.webp">
+
+  <!-- Preload Font dan Aset Kritis -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/img/hero-1.webm" as="video" type="video/webm" />
+  <link rel="preload" href="/img/fallback.webp" as="image" type="image/webp" />
+
+  <!-- CSS Utama -->
+  <link href="/css/style.css" rel="stylesheet" />
+
+  <!-- Favicon dan PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#E63946" />
+  <link rel="icon" href="/img/icons/icon-192x192.webp" type="image/webp" />
+  <link rel="apple-touch-icon" href="/img/icons/icon-192x192.webp" />
 </head>
+
 <body>
+  <!-- Header -->
   <header>
-    <img src="/img/logoneonefos1.webp" alt="Logo Neo Nefos" class="logo" loading="lazy">
-    <nav>
-      <a href="#about">Tentang</a>
-      <a href="#mandala">Proyek Mandala</a>
+    <img src="/img/logoneonefos1.webp" alt="Logo Neo Nefos" class="logo" loading="lazy" />
+    
+    <!-- Navigasi -->
+    <nav id="main-nav">
+      <a href="/about">TENTANG</a>
+      <a href="https://mandala.neonefos.com" target="_blank">MANDALA</a>
+      <a href="https://store.neonefos.com" target="_blank">TOKO</a>
+      <a href="/join" class="btn">GABUNG</a>
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
     <video autoplay muted loop playsinline id="bgVideo" poster="/img/fallback.webp"></video>
-    <img src="/img/fallback.webp" alt="Fallback" class="video-fallback" id="videoFallback">
+    <img src="/img/fallback.webp" alt="Fallback" class="video-fallback" id="videoFallback" style="display: none;" />
+    
     <div class="hero-content">
       <h1>GLOBAL SOLIDARITY FOR PEOPLE'S LIBERATION</h1>
       <a href="#join" class="btn">Gabung Gerakan</a>
     </div>
   </section>
 
+  <!-- Ticker -->
   <div class="ticker">
     <marquee>#BersamaNefos • Seni Melawan Ketimpangan • Solidaritas Global South</marquee>
   </div>
 
-  <!-- Hanya load script.js, tidak ada duplikasi kode -->
+  <!-- Section Ekosistem -->
+  <section class="ecosystem">
+    <h2>EKOSISTEM NEO NEFOS</h2>
+    <div class="grid">
+      <!-- Kartu Mandala -->
+      <div class="card">
+        <img src="/assets/icons/mandala-icon.webp" alt="Mandala" />
+        <h3>Proyek Mandala</h3>
+        <p>Peta kolaborasi seni & solidaritas.</p>
+        <a href="https://mandala.neonefos.com" class="btn">Jelajahi →</a>
+      </div>
+      
+      <!-- Kartu Toko -->
+      <div class="card">
+        <img src="/assets/icons/store-icon.webp" alt="Toko" />
+        <h3>Toko Solidaritas</h3>
+        <p>Beli merchandise, dukung gerakan.</p>
+        <a href="https://store.neonefos.com" class="btn">Kunjungi →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript -->
   <script src="/js/script.js" defer></script>
 </body>
 </html>
