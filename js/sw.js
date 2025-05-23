@@ -1,14 +1,14 @@
-// NEO NEFOS SERVICE WORKER
-const CACHE_NAME = 'neonefos-v1';
+const CACHE_NAME = 'neonefos-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
-  '/style.css',
-  '/script.js',
-  '/img/logo.webp',
+  '/css/style.css',
+  '/js/script.js',
+  '/img/logoneonefos1.webp',
   '/img/fallback.webp',
   '/img/hero-1.webm',
-  '/manifest.json'
+  '/manifest.json',
+  '/data/ticker.json'
 ];
 
 self.addEventListener('install', (event) => {
