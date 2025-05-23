@@ -15,6 +15,10 @@
   <!-- CSS Utama -->
   <link href="/css/style.css" rel="stylesheet" />
 
+  <!-- Leaflet.js (CDN) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
   <!-- Favicon dan PWA -->
   <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#E63946" />
@@ -26,8 +30,6 @@
   <!-- Header -->
   <header>
     <img src="/img/logoneonefos1.webp" alt="Logo Neo Nefos" class="logo" loading="lazy" />
-    
-    <!-- Navigasi -->
     <nav id="main-nav">
       <a href="/about">TENTANG</a>
       <a href="https://mandala.neonefos.com" target="_blank">MANDALA</a>
@@ -40,7 +42,6 @@
   <section class="hero">
     <video autoplay muted loop playsinline id="bgVideo" poster="/img/fallback.webp"></video>
     <img src="/img/fallback.webp" alt="Fallback" class="video-fallback" id="videoFallback" style="display: none;" />
-    
     <div class="hero-content">
       <h1>GLOBAL SOLIDARITY FOR PEOPLE'S LIBERATION</h1>
       <a href="#join" class="btn">Gabung Gerakan</a>
@@ -56,15 +57,12 @@
   <section class="ecosystem">
     <h2>EKOSISTEM NEO NEFOS</h2>
     <div class="grid">
-      <!-- Kartu Mandala -->
       <div class="card">
         <img src="/assets/icons/mandala-icon.webp" alt="Mandala" />
         <h3>Proyek Mandala</h3>
         <p>Peta kolaborasi seni & solidaritas.</p>
         <a href="https://mandala.neonefos.com" class="btn">Jelajahi →</a>
       </div>
-      
-      <!-- Kartu Toko -->
       <div class="card">
         <img src="/assets/icons/store-icon.webp" alt="Toko" />
         <h3>Toko Solidaritas</h3>
@@ -72,6 +70,30 @@
         <a href="https://store.neonefos.com" class="btn">Kunjungi →</a>
       </div>
     </div>
+  </section>
+
+  <!-- Section KARYA TERKINI -->
+  <section class="highlight">
+    <h2>KARYA TERKINI</h2>
+    <div class="highlight-grid">
+      <div class="highlight-item">
+        <img src="https://gallery.neonefos.com/wp-content/uploads/mural-terbaru.webp" alt="Mural Solidaritas" loading="lazy">
+        <h3>Mural "Global South Bersatu"</h3>
+        <a href="https://gallery.neonefos.com/mural" class="btn-small">Lihat Detail</a>
+      </div>
+      <div class="highlight-item">
+        <img src="https://store.neonefos.com/wp-content/uploads/tshirt-fundraiser.webp" alt="Kaos Fundraiser" loading="lazy">
+        <h3>Kaos "Bebaskan Palestina"</h3>
+        <a href="https://store.neonefos.com/product/kaos-palestina" class="btn-small">Beli Sekarang</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Peta Mandala -->
+  <section class="mandala-map">
+    <h2>PROYEK MANDALA</h2>
+    <div id="map" style="height: 400px;"></div>
+    <a href="https://mandala.neonefos.com" class="btn" style="margin-top: 1rem; display: inline-block;">Jelajahi Semua Simpul</a>
   </section>
 
   <!-- Badge Transparansi -->
@@ -86,5 +108,11 @@
 
   <!-- JavaScript -->
   <script src="/js/script.js" defer></script>
+  <script>
+    const map = L.map('map').setView([-2.5489, 118.0149], 4);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    L.marker([-6.2088, 106.8456]).addTo(map)
+      .bindPopup("<b>Jakarta</b><br>Simpul Mandala #1");
+  </script>
 </body>
 </html>
