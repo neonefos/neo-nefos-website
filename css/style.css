@@ -132,7 +132,24 @@ nav a:hover {
   color: var(--primary);
   transform: translateY(-3px);
 }
+/* Efek Hero Section seperti BLM */
+.hero {
+  position: relative;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+}
 
+.hero h1 {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  font-size: clamp(2rem, 5vw, 4rem); /* Responsive font size */
+}
+
+/* Ticker kuning khas BLM */
+.ticker {
+  background: var(--gold);
+  color: var(--black);
+  font-weight: bold;
+  padding: 10px 0;
+}
 /* =============================================
    TICKER STYLES
    Gaya untuk running text/breaking news
