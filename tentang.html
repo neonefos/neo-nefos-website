@@ -1,61 +1,77 @@
-/* === tentang.css === */
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Neo Nefos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tentang.css">
+</head>
+<body>
 
-:root {
-  --merah-nefos: #d62828;
-  --putih: #ffffff;
-  --abu: #f4f4f4;
-  --hitam: #000000;
-}
+  <!-- Header -->
+  <header id="main-header">
+    <div class="header-inner">
+      <a href="index.html">
+        <img src="assets/image/logo/logoneonefos1.webp" alt="Neo Nefos" class="logo-small" id="header-logo" />
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="#sejarah">Sejarah</a></li>
+          <li><a href="#visi">Visi & Misi</a></li>
+          <li><a href="#siapa">Siapa Kami</a></li>
+          <li><a href="#kompas">Kompas</a></li>
+          <li><a href="#prinsip">Prinsip</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-body {
-  scroll-behavior: smooth;
-  background-color: var(--putih);
-  color: var(--hitam);
-}
+  <!-- Logo besar di atas (hanya untuk landing, tidak di halaman ini) -->
 
-main {
-  margin-top: 80px;
-}
+  <main>
+    <!-- Sejarah -->
+    <section id="sejarah" class="section-block">
+      <div class="content-wrapper">
+        <h2>Sejarah Neo Nefos</h2>
+        <p>Gerakan ini lahir dari kebutuhan akan solidaritas Global South yang merdeka, akar ideologisnya tumbuh dari semangat Konferensi Asia Afrika 1955, GANEFO, dan perjuangan rakyat kecil.</p>
+      </div>
+    </section>
 
-.section-block {
-  padding: 80px 20px;
-  background-color: var(--abu);
-  border-bottom: 4px solid var(--merah-nefos);
-}
+    <!-- Visi dan Misi -->
+    <section id="visi" class="section-block">
+      <div class="content-wrapper">
+        <h2>Visi & Misi</h2>
+        <p>Visi kami adalah membangun ruang-ruang kebudayaan tandingan. Misi kami adalah membuka akses produksi, distribusi, dan pertukaran yang adil bagi rakyat.</p>
+      </div>
+    </section>
 
-.section-block:nth-of-type(even) {
-  background-color: var(--putih);
-}
+    <!-- Siapa Kami -->
+    <section id="siapa" class="section-block">
+      <div class="content-wrapper">
+        <h2>Siapa Kami</h2>
+        <p>Kami adalah perupa, petani kota, peneliti akar rumput, guru jalanan, dan aktivis budaya yang tersebar di berbagai tempat. Kami saling terhubung melalui solidaritas.</p>
+      </div>
+    </section>
 
-.content-wrapper {
-  max-width: 900px;
-  margin: auto;
-  text-align: center;
-}
+    <!-- Kompas Gerakan -->
+    <section id="kompas" class="section-block">
+      <div class="content-wrapper">
+        <h2>Kompas Gerakan</h2>
+        <p>Konferensi Asia-Afrika, Tricontinental, GANEFO, dan berbagai bentuk perjuangan rakyat menjadi penunjuk arah dalam kerja-kerja kami di masa kini.</p>
+      </div>
+    </section>
 
-h2 {
-  color: var(--merah-nefos);
-  font-size: 2.4rem;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  font-weight: 700;
-}
+    <!-- Prinsip Dasar -->
+    <section id="prinsip" class="section-block">
+      <div class="content-wrapper">
+        <h2>Prinsip Dasar</h2>
+        <p>Transparansi, keberpihakan pada yang lemah, akses terbuka, dan tanggung jawab sosial menjadi prinsip dasar dalam seluruh aktivitas Neo Nefos Movement.</p>
+      </div>
+    </section>
+  </main>
 
-p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: var(--hitam);
-}
-
-/* Tambahan responsif */
-@media (max-width: 768px) {
-  h2 {
-    font-size: 1.8rem;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-}
-
-/* Navigasi tetap gaya header global dari style.css */
+  <script src="js/script.js"></script>
+</body>
+</html>
