@@ -13,12 +13,7 @@ window.addEventListener('scroll', () => {
     if (heroLogo) heroLogo.style.opacity = '1';
   }
 });
-// Deteksi scroll untuk header
-window.addEventListener('scroll', () => {
-  const header = document.querySelector('header');
-  header.classList.toggle('scrolled', window.scrollY > 100);
- } 
-});
+
 // Fungsi ticker isi dinamis
 window.addEventListener('DOMContentLoaded', () => {
   const ticker = document.querySelector('.ticker-text span');
