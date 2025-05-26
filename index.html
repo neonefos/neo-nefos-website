@@ -4,127 +4,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neo Nefos Movement</title>
+  
+  <!-- Font & Style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Preload Font dan Aset Kritis -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
-  <link rel="preload" href="/img/hero-1.webm" as="video" type="video/webm" />
-  <link rel="preload" href="/img/fallback.webp" as="image" type="image/webp" />
-
-  <!-- CSS Utama -->
-  <link href="/css/style.css" rel="stylesheet" />
-
-  <!-- Leaflet.js (CDN) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <!-- Favicon dan PWA -->
-  <link rel="manifest" href="/manifest.json" />
-  <meta name="theme-color" content="#E63946" />
-  <link rel="icon" href="/img/icons/icon-192x192.webp" type="image/webp" />
-  <link rel="apple-touch-icon" href="/img/icons/icon-192x192.webp" />
+  <!-- Metadata PWA (Opsional) -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="assets/image/icons/favicon.ico" type="image/x-icon">
+  <meta name="theme-color" content="#002f6c">
 </head>
-
 <body>
-  <!-- Header -->
-  <header>
-    <img src="/img/logoneonefos1.webp" alt="Logo Neo Nefos" class="logo" loading="lazy" />
-    <nav id="main-nav">
-      <a href="/about">TENTANG</a>
-      <a href="https://mandala.neonefos.com" target="_blank">MANDALA</a>
-      <a href="https://store.neonefos.com" target="_blank">TOKO</a>
-      <a href="/join" class="btn">GABUNG</a>
-    </nav>
+  <!-- Logo Hero (di luar header) -->
+  <div class="hero-logo-container">
+    <img src="assets/image/logo/logoneonefos1.webp" alt="Neo Nefos" class="hero-logo">
+  </div>
+
+  <!-- HEADER: muncul saat scroll -->
+  <header id="main-header">
+    <div class="header-inner">
+      <img src="assets/image/logo/logoneonefos1.webp" alt="Logo Kecil" class="logo-small" id="header-logo">
+      <nav class="main-nav">
+        <ul>
+          <li class="nav-item dropdown">
+            <a href="tentang.html">Tentang</a>
+            <div class="dropdown-box kuning">
+              <a href="#sejarah">Sejarah</a>
+              <a href="#kompas">Kompas</a>
+              <a href="#visi">Visi & Misi</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="gerakan.html">Gerakan</a>
+            <div class="dropdown-box kuning">
+              <a href="#seni">Seni</a>
+              <a href="#budaya">Budaya</a>
+              <a href="#tekno">Teknologi</a>
+            </div>
+          </li>
+          <li><a href="mandala.html">Mandala</a></li>
+          <li><a href="arsip.html">Arsip</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+          <li><a href="kontak.html" class="menu-cta kuning">Gabung</a></li>
+          <li><a href="store.html" class="menu-cta putih">Toko</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- HERO VIDEO SECTION -->
   <section class="hero">
-    <video autoplay muted loop playsinline id="bgVideo" poster="/img/fallback.webp"></video>
-    <img src="/img/fallback.webp" alt="Fallback" class="video-fallback" id="videoFallback" style="display: none;" />
-    <div class="hero-content">
+    <video autoplay muted loop playsinline id="hero-video" poster="assets/image/hero/fallback.webp">
+      <source src="assets/video/hero-1.webm" type="video/webm">
+      <source src="assets/video/hero-1.mp4" type="video/mp4">
+      Maaf, browser Anda tidak mendukung video.
+    </video>
+    <div class="hero-tagline">
       <h1>GLOBAL SOLIDARITY FOR PEOPLE'S LIBERATION</h1>
-      <a href="#join" class="btn">Gabung Gerakan</a>
-    </div>
-  </section>
-
-  <!-- Ticker -->
-  <div class="ticker">
-    <marquee>#BersamaNefos • Seni Melawan Ketimpangan • Solidaritas Global South</marquee>
-  </div>
-
-  <!-- Section Ekosistem -->
-  <section class="ecosystem">
-    <h2>EKOSISTEM NEO NEFOS</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="/assets/icons/mandala-icon.webp" alt="Mandala" />
-        <h3>Proyek Mandala</h3>
-        <p>Peta kolaborasi seni & solidaritas.</p>
-        <a href="https://mandala.neonefos.com" class="btn">Jelajahi →</a>
-      </div>
-      <div class="card">
-        <img src="/assets/icons/store-icon.webp" alt="Toko" />
-        <h3>Toko Solidaritas</h3>
-        <p>Beli merchandise, dukung gerakan.</p>
-        <a href="https://store.neonefos.com" class="btn">Kunjungi →</a>
+      <div class="hero-cta">
+        <a href="kontak.html" class="btn kuning">Gabung</a>
+        <a href="donasi.html" class="btn merah">Donasi</a>
       </div>
     </div>
   </section>
 
-  <!-- Section KARYA TERKINI -->
-  <section class="highlight">
-    <h2>KARYA TERKINI</h2>
-    <div class="highlight-grid">
-      <div class="highlight-item">
-        <img src="https://gallery.neonefos.com/wp-content/uploads/mural-terbaru.webp" alt="Mural Solidaritas" loading="lazy">
-        <h3>Mural "Global South Bersatu"</h3>
-        <a href="https://gallery.neonefos.com/mural" class="btn-small">Lihat Detail</a>
-      </div>
-      <div class="highlight-item">
-        <img src="https://store.neonefos.com/wp-content/uploads/tshirt-fundraiser.webp" alt="Kaos Fundraiser" loading="lazy">
-        <h3>Kaos "Bebaskan Palestina"</h3>
-        <a href="https://store.neonefos.com/product/kaos-palestina" class="btn-small">Beli Sekarang</a>
-      </div>
+  <!-- TICKER SECTION -->
+  <section class="ticker">
+    <div class="ticker-text" id="ticker-text">
+      #BersamaNefos • Seni Melawan Ketimpangan • Solidaritas Global South • Mandala Komunitas •
     </div>
   </section>
 
-  <!-- Section Peta Mandala -->
-  <section class="mandala-map">
-    <h2>PROYEK MANDALA</h2>
-    <div id="map" style="height: 400px;"></div>
-    <a href="https://mandala.neonefos.com" class="btn" style="margin-top: 1rem; display: inline-block;">Jelajahi Semua Simpul</a>
-  </section>
-
-  <!-- Badge Transparansi -->
-  <footer>
-    <div class="transparency-badge" style="text-align: center; padding: 2rem;">
-      <a href="/transparency" style="text-decoration: none; color: inherit;">
-        <img src="/assets/icons/open-financials.webp" alt="Open Financials" style="width: 100px; margin-bottom: 1rem;" />
-        <div style="font-weight: bold; text-transform: uppercase;">LIHAT LAPORAN KEUANGAN</div>
-      </a>
-    </div>
-    <div class="subdomain-cards">
-  <div class="subdomain-card">
-    <h3>BACA ANALISIS</h3>
-    <p>Tulisan mendalam di blog kami.</p>
-    <a href="https://blog.neonefos.com" class="btn-outline">Buka Blog →</a>
-  </div>
-  <div class="subdomain-card">
-    <h3>DONASI CRYPTO</h3>
-    <p>Dukung via Web3.</p>
-    <a href="https://crypto.neonefos.com" class="btn-outline">Wallet Kami →</a>
-  </div>
-</div>
-  </footer>
-
-  <!-- JavaScript -->
-  <script src="/js/script.js" defer></script>
-  <script>
-    const map = L.map('map').setView([-2.5489, 118.0149], 4);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-    L.marker([-6.2088, 106.8456]).addTo(map)
-      .bindPopup("<b>Jakarta</b><br>Simpul Mandala #1");
-  </script>
+  <!-- JS -->
+  <script src="js/script.js"></script>
 </body>
 </html>
