@@ -1,6 +1,8 @@
-/* === STYLE.CSS UNTUK NEO NEFOS MOVEMENT === */
+/* === style.css untuk Neo Nefos Movement === */
 
-/* === PALLET WARNA === */
+/* =================== */
+/* PALLET WARNA GLOBAL */
+/* =================== */
 :root {
   --biru-nefos: #002f6c;
   --kuning-nefos: #ffcc00;
@@ -10,22 +12,27 @@
   --hitam: #000000;
 }
 
-/* === RESET & FONT === */
-body, html {
+/* ===== RESET DASAR ===== */
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: var(--putih);
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: sans-serif;
+  background-color: var(--putih);
+  color: var(--hitam);
   scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4 {
-  font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 1px;
-  margin: 0;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-/* === HERO LOGO SEBELUM SCROLL === */
+/* ========= HERO LOGO AWAL ========= */
 .hero-logo-container {
   position: absolute;
   top: 20px;
@@ -36,29 +43,25 @@ h1, h2, h3, h4 {
 
 .hero-logo {
   width: 150px; /* ~40mm */
-  height: auto;
 }
 
-/* === HEADER STICKY === */
+/* ========= HEADER STICKY ========= */
 #main-header {
-  width: 100%;
-  background-color: transparent;
   position: fixed;
   top: 0;
-  left: 0;
-  padding: 5px 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 68px; /* ~17mm */
-  z-index: 999;
+  width: 100%;
+  height: 64px; /* ~17mm */
+  background-color: var(--biru-nefos);
   opacity: 0;
   pointer-events: none;
-  transition: top 0.3s ease, opacity 0.5s ease, background-color 0.3s;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #main-header.visible {
-  background-color: var(--biru-nefos);
   opacity: 1;
   pointer-events: all;
 }
@@ -68,154 +71,149 @@ h1, h2, h3, h4 {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1440px;
+  max-width: 1200px;
+  padding: 0 40px;
 }
 
 .logo-small {
-  width: 45px;
-  height: auto;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  width: 48px; /* ~12mm */
+  transition: opacity 0.3s ease;
 }
 
-.logo-small.fade-in {
-  opacity: 1;
-}
-
-/* === NAVIGATION === */
+/* ========= NAVIGATION ========= */
 .main-nav ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   gap: 20px;
-  align-items: center;
-}
-
-.main-nav li {
-  position: relative;
 }
 
 .main-nav a {
   color: var(--putih);
   text-decoration: none;
-  padding: 10px 15px;
-  display: inline-block;
   font-weight: bold;
-  text-shadow: 0 0 3px rgba(0,0,0,0.5);
+  padding: 10px;
+  position: relative;
 }
 
+.main-nav a:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--putih);
+}
+
+/* ========= MENU CTA ========= */
 .menu-cta.kuning {
   background: var(--kuning-nefos);
   color: var(--hitam);
   border-radius: 4px;
 }
 
-.menu-cta.putih {
+.menu-cta.biru {
   background: var(--putih);
   color: var(--biru-nefos);
   border-radius: 4px;
 }
 
-/* === DROPDOWN === */
+/* ========= DROPDOWN ========= */
+.dropdown {
+  position: relative;
+}
+
 .dropdown-box {
+  display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  background: var(--kuning-nefos);
-  border-bottom: 4px solid var(--merah-nefos);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-  display: none;
-  flex-direction: column;
   min-width: 160px;
-  z-index: 1001;
+  background: var(--kuning-nefos);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-box {
+  display: flex;
   animation: fadeIn 0.3s ease-in-out;
 }
 
-.nav-item:hover .dropdown-box {
-  display: flex;
-}
-
 .dropdown-box a {
-  padding: 10px 15px;
-  color: var(--hitam);
+  padding: 10px;
+  color: var(--merah-nefos);
   text-decoration: none;
-  font-weight: 500;
-  white-space: nowrap;
+  font-weight: normal;
 }
 
-/* === HERO SECTION === */
+.dropdown-box a:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* ========= HERO SECTION ========= */
 .hero {
+  position: relative;
   height: 414px; /* ~110mm */
   overflow: hidden;
-  position: relative;
-  z-index: 0;
 }
 
-.hero video {
+#bgVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%) contrast(120%);
+  z-index: -1;
 }
 
-.hero-tagline {
+.hero-content {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-  z-index: 10;
+  color: var(--putih);
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
 }
 
-.hero-tagline h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+.hero-content h1 {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  margin-bottom: 20px;
 }
 
-.hero-cta a.btn {
-  margin: 0 10px;
-  padding: 10px 20px;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-.btn.kuning {
+.btn {
   background: var(--kuning-nefos);
   color: var(--hitam);
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
 }
 
-.btn.merah {
+.btn:hover {
   background: var(--merah-nefos);
   color: var(--putih);
 }
 
-.btn.kuning:hover, .btn.merah:hover {
-  opacity: 0.9;
-}
-
-/* === TICKER === */
+/* ========= TICKER ========= */
 .ticker {
-  height: 57px; /* ~15mm */
   background: var(--kuning-nefos);
+  height: 57px;
   display: flex;
   align-items: center;
   overflow: hidden;
-  position: relative;
-  z-index: 2;
 }
 
 .ticker-text {
   white-space: nowrap;
   animation: ticker-scroll 25s linear infinite;
   font-weight: bold;
-  font-size: 1rem;
-  color: var(--hitam);
+  font-size: 18px;
   padding-left: 100%;
+  color: var(--hitam);
 }
 
 @keyframes ticker-scroll {
@@ -223,27 +221,108 @@ h1, h2, h3, h4 {
   100% { transform: translateX(-100%); }
 }
 
-/* === ANIMATIONS === */
+/* ========= SECTION BLOCKS ========= */
+.section-block {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.section-block.light {
+  background: var(--putih);
+  color: var(--hitam);
+}
+
+.section-block.white {
+  background: #f7f7f7;
+}
+
+.section-block.dark {
+  background: var(--biru-nefos);
+  color: var(--putih);
+}
+
+.section-block.yellow {
+  background: var(--kuning-nefos);
+  color: var(--hitam);
+}
+
+.content-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ========= GRID KARYA ========= */
+.highlight-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.highlight-item {
+  width: 300px;
+  background: var(--putih);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.highlight-item img {
+  width: 100%;
+  height: auto;
+}
+
+.highlight-item h3 {
+  padding: 10px;
+}
+
+.btn-small {
+  display: inline-block;
+  margin: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  background: var(--biru-nefos);
+  color: var(--putih);
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+/* ========= FOOTER ========= */
+footer {
+  background: #111;
+  color: var(--putih);
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+footer a {
+  color: var(--kuning-nefos);
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+/* ========= ANIMASI ========= */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-/* === RESPONSIVE === */
+/* ========= RESPONSIVE ========= */
 @media (max-width: 768px) {
-  .hero-logo {
-    width: 100px;
-  }
-  .logo-small {
-    width: 30px;
+  .header-inner {
+    flex-direction: column;
   }
   .main-nav ul {
     flex-direction: column;
-    position: absolute;
     background: var(--biru-nefos);
-    top: 68px;
+    position: absolute;
+    top: 64px;
     right: 0;
     width: 100%;
-    display: none;
+    display: none; /* Toggle manual jika diperlukan */
   }
 }
