@@ -1,30 +1,59 @@
-// === script.js ===
+// === script.js untuk Neo Nefos Movement ===
 
-// Scroll untuk header dinamis
+// Fungsi scroll header dan logo besar
 window.addEventListener('scroll', () => {
   const header = document.getElementById('main-header');
   const heroLogo = document.querySelector('.hero-logo-container');
-  const headerLogo = document.getElementById('header-logo');
 
   if (window.scrollY > 50) {
-    if (header) header.classList.add('visible');
-    if (heroLogo) heroLogo.classList.add('fade-out');
-    if (headerLogo) headerLogo.classList.add('fade-in');
+    header.classList.add('visible');
+    if (heroLogo) heroLogo.style.opacity = '0';
   } else {
-    if (header) header.classList.remove('visible');
-    if (heroLogo) heroLogo.classList.remove('fade-out');
-    if (headerLogo) headerLogo.classList.remove('fade-in');
+    header.classList.remove('visible');
+    if (heroLogo) heroLogo.style.opacity = '1';
   }
 });
 
-// Hover dropdown
-document.querySelectorAll('.dropdown').forEach(item => {
-  item.addEventListener('mouseenter', () => {
-    const box = item.querySelector('.dropdown-box');
+// Fungsi ticker isi dinamis
+window.addEventListener('DOMContentLoaded', () => {
+  const ticker = document.querySelector('.ticker-text span');
+  if (ticker) {
+    ticker.textContent = '#BersamaNefos • Seni Melawan Ketimpangan • Solidaritas Global South • ';
+  }
+});
+
+// (OPSIONAL) Preload video loop berurutan
+const bgVideo = document.getElementById('bgVideo');
+if (bgVideo) {
+  const sources = [
+    'assets/video/hero-1.webm',
+    'assets/video/hero-2.webm',
+    'assets/video/hero-3.webm',
+    'assets/video/hero-4.webm',
+    'assets/video/hero-5.webm'
+  ];
+  let current = 0;
+
+  bgVideo.src = sources[current];
+  bgVideo.load();
+
+  bgVideo.addEventListener('ended', () => {
+    current = (current + 1) % sources.length;
+    bgVideo.src = sources[current];
+    bgVideo.load();
+    bgVideo.play();
+  });
+}
+
+// Fungsi dropdown tetap smooth (jika pakai JS fallback di mobile)
+const dropdowns = document.querySelectorAll('.dropdown');
+dropdowns.forEach(drop => {
+  drop.addEventListener('mouseenter', () => {
+    const box = drop.querySelector('.dropdown-box');
     if (box) box.style.display = 'flex';
   });
-  item.addEventListener('mouseleave', () => {
-    const box = item.querySelector('.dropdown-box');
+  drop.addEventListener('mouseleave', () => {
+    const box = drop.querySelector('.dropdown-box');
     if (box) box.style.display = 'none';
   });
 });
