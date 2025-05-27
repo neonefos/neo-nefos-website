@@ -1,8 +1,5 @@
-/* === style.css untuk Neo Nefos Movement === */
+/* === style.css untuk Neo Nefos Landing Page === */
 
-/* =================== */
-/* PALLET WARNA GLOBAL */
-/* =================== */
 :root {
   --biru-nefos: #002f6c;
   --kuning-nefos: #ffcc00;
@@ -10,210 +7,178 @@
   --hijau-nefos: #4caf50;
   --putih: #ffffff;
   --hitam: #000000;
+  --abu: #f4f4f4;
 }
 
-/* ===== RESET DASAR ===== */
-* {
+/* Reset dasar */
+body, html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body, html {
-  font-family: sans-serif;
-  background-color: var(--putih);
-  color: var(--hitam);
   scroll-behavior: smooth;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--putih);
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ========= HERO LOGO AWAL ========= */
-.hero-logo-container {
-  position: absolute;
-  top: 20px;
-  left: 40px;
-  z-index: 1000;
-  transition: opacity 0.5s ease;
-}
-
-.hero-logo {
-  width: 150px; /* ~40mm */
-}
-
-/* ========= HEADER STICKY ========= */
+/* Header Awal Transparan */
 #main-header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 64px; /* ~17mm */
-  background-color: var(--biru-nefos);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#main-header.visible {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
   padding: 0 40px;
-}
-
-.logo-small {
-  width: 48px; /* ~12mm */
-  transition: opacity 0.3s ease;
-}
-
-/* ========= NAVIGATION ========= */
-.main-nav ul {
-  list-style: none;
+  height: 64px; /* 17mm */
   display: flex;
-  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+  transition: background-color 0.4s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+/* Header setelah scroll */
+#main-header.scrolled {
+  background-color: var(--biru-nefos);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Logo besar (di luar header) */
+.hero-logo-container {
+  position: absolute;
+  top: 24px;
+  left: 32px;
+  z-index: 999;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.hero-logo {
+  height: 150px; /* 40mm */
+}
+
+/* Logo kecil dalam header */
+.logo-small {
+  height: 48px; /* 12mm */
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+#main-header.scrolled .logo-small {
+  opacity: 1;
+}
+
+/* Navigasi */
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 24px;
+  align-items: center;
 }
 
 .main-nav a {
   color: var(--putih);
   text-decoration: none;
   font-weight: bold;
-  padding: 10px;
+  padding: 10px 12px;
+  transition: border-bottom 0.2s ease;
   position: relative;
 }
 
 .main-nav a:hover::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 100%;
+  left: 10px;
+  right: 10px;
   height: 2px;
   background: var(--putih);
 }
 
-/* ========= MENU CTA ========= */
-.menu-cta.kuning {
-  background: var(--kuning-nefos);
-  color: var(--hitam);
-  border-radius: 4px;
-}
-
-.menu-cta.biru {
-  background: var(--putih);
-  color: var(--biru-nefos);
-  border-radius: 4px;
-}
-
-/* ========= DROPDOWN ========= */
+/* Dropdown */
 .dropdown {
   position: relative;
 }
-
 .dropdown-box {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 160px;
   background: var(--kuning-nefos);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  flex-direction: column;
-  z-index: 1000;
+  border-bottom: 4px solid var(--merah-nefos);
+  min-width: 160px;
+  z-index: 1001;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: fadeSlide 0.3s ease;
 }
 
 .dropdown:hover .dropdown-box {
   display: flex;
-  animation: fadeIn 0.3s ease-in-out;
+  flex-direction: column;
 }
-
 .dropdown-box a {
-  padding: 10px;
-  color: var(--merah-nefos);
+  color: var(--hitam);
+  padding: 10px 16px;
   text-decoration: none;
-  font-weight: normal;
+  transition: background 0.2s ease;
 }
-
 .dropdown-box a:hover {
-  background: rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.1);
+  text-decoration: underline;
 }
 
-/* ========= HERO SECTION ========= */
+/* Hero Section */
 .hero {
+  height: 454px; /* 120mm */
   position: relative;
-  height: 414px; /* ~110mm */
   overflow: hidden;
+  z-index: 0;
 }
 
-#bgVideo {
-  position: absolute;
-  top: 0;
-  left: 0;
+.hero video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  z-index: 1;
   text-align: center;
   color: var(--putih);
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+  padding-top: 100px;
 }
 
 .hero-content h1 {
-  font-size: clamp(1.5rem, 4vw, 3rem);
-  margin-bottom: 20px;
+  font-size: 36px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
 }
 
 .btn {
+  margin-top: 16px;
+  padding: 12px 24px;
   background: var(--kuning-nefos);
   color: var(--hitam);
-  padding: 12px 24px;
-  border-radius: 4px;
   font-weight: bold;
+  border-radius: 4px;
   text-decoration: none;
-  transition: background 0.3s ease;
 }
 
-.btn:hover {
-  background: var(--merah-nefos);
-  color: var(--putih);
-}
-
-/* ========= TICKER ========= */
+/* Ticker */
 .ticker {
+  height: 57px; /* 15mm */
   background: var(--kuning-nefos);
-  height: 57px;
+  color: var(--hitam);
+  overflow: hidden;
   display: flex;
   align-items: center;
-  overflow: hidden;
 }
 
 .ticker-text {
   white-space: nowrap;
-  animation: ticker-scroll 25s linear infinite;
-  font-weight: bold;
+  animation: ticker-scroll 20s linear infinite;
   font-size: 18px;
   padding-left: 100%;
-  color: var(--hitam);
 }
 
 @keyframes ticker-scroll {
@@ -221,108 +186,30 @@ img {
   100% { transform: translateX(-100%); }
 }
 
-/* ========= SECTION BLOCKS ========= */
-.section-block {
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.section-block.light {
-  background: var(--putih);
-  color: var(--hitam);
-}
-
-.section-block.white {
-  background: #f7f7f7;
-}
-
-.section-block.dark {
-  background: var(--biru-nefos);
-  color: var(--putih);
-}
-
-.section-block.yellow {
-  background: var(--kuning-nefos);
-  color: var(--hitam);
-}
-
-.content-wrapper {
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-/* ========= GRID KARYA ========= */
-.highlight-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.highlight-item {
-  width: 300px;
-  background: var(--putih);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  text-align: left;
-}
-
-.highlight-item img {
-  width: 100%;
-  height: auto;
-}
-
-.highlight-item h3 {
-  padding: 10px;
-}
-
-.btn-small {
-  display: inline-block;
-  margin: 10px;
-  font-size: 14px;
-  font-weight: bold;
-  background: var(--biru-nefos);
-  color: var(--putih);
-  padding: 8px 16px;
-  border-radius: 4px;
-  text-decoration: none;
-}
-
-/* ========= FOOTER ========= */
-footer {
-  background: #111;
-  color: var(--putih);
-  padding: 40px 20px;
-  text-align: center;
-  font-size: 14px;
-}
-
-footer a {
-  color: var(--kuning-nefos);
-  margin: 0 10px;
-  text-decoration: none;
-}
-
-/* ========= ANIMASI ========= */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* ========= RESPONSIVE ========= */
-@media (max-width: 768px) {
-  .header-inner {
-    flex-direction: column;
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsif */
+@media (max-width: 768px) {
   .main-nav ul {
     flex-direction: column;
     background: var(--biru-nefos);
-    position: absolute;
-    top: 64px;
-    right: 0;
-    width: 100%;
-    display: none; /* Toggle manual jika diperlukan */
+  }
+  .hero-logo {
+    height: 100px;
+  }
+  .logo-small {
+    height: 32px;
+  }
+  .hero-content h1 {
+    font-size: 28px;
   }
 }
