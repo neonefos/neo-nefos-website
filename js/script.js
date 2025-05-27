@@ -1,59 +1,24 @@
-// === script.js untuk Neo Nefos Movement ===
+// === script.js untuk Neo Nefos ===
 
-// Fungsi scroll header dan logo besar
-window.addEventListener('scroll', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const header = document.getElementById('main-header');
   const heroLogo = document.querySelector('.hero-logo-container');
+  const logoSmall = document.getElementById('header-logo');
 
-  if (window.scrollY > 50) {
-    header.classList.add('visible');
-    if (heroLogo) heroLogo.style.opacity = '0';
-  } else {
-    header.classList.remove('visible');
-    if (heroLogo) heroLogo.style.opacity = '1';
-  }
-});
-
-// Fungsi ticker isi dinamis
-window.addEventListener('DOMContentLoaded', () => {
-  const ticker = document.querySelector('.ticker-text span');
-  if (ticker) {
-    ticker.textContent = '#BersamaNefos • Seni Melawan Ketimpangan • Solidaritas Global South • ';
-  }
-});
-
-// (OPSIONAL) Preload video loop berurutan
-const bgVideo = document.getElementById('bgVideo');
-if (bgVideo) {
-  const sources = [
-    'assets/video/hero-1.webm',
-    'assets/video/hero-2.webm',
-    'assets/video/hero-3.webm',
-    'assets/video/hero-4.webm',
-    'assets/video/hero-5.webm'
-  ];
-  let current = 0;
-
-  bgVideo.src = sources[current];
-  bgVideo.load();
-
-  bgVideo.addEventListener('ended', () => {
-    current = (current + 1) % sources.length;
-    bgVideo.src = sources[current];
-    bgVideo.load();
-    bgVideo.play();
-  });
-}
-
-// Fungsi dropdown tetap smooth (jika pakai JS fallback di mobile)
-const dropdowns = document.querySelectorAll('.dropdown');
-dropdowns.forEach(drop => {
-  drop.addEventListener('mouseenter', () => {
-    const box = drop.querySelector('.dropdown-box');
-    if (box) box.style.display = 'flex';
-  });
-  drop.addEventListener('mouseleave', () => {
-    const box = drop.querySelector('.dropdown-box');
-    if (box) box.style.display = 'none';
+  // Fungsi saat scroll
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+      if (heroLogo) {
+        heroLogo.style.opacity = '0';
+        heroLogo.style.transform = 'scale(0.95)';
+      }
+    } else {
+      header.classList.remove('scrolled');
+      if (heroLogo) {
+        heroLogo.style.opacity = '1';
+        heroLogo.style.transform = 'scale(1)';
+      }
+    }
   });
 });
