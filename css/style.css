@@ -1,12 +1,4 @@
-/* Reset & Variabel */
-:root {
-  --blue: #002f6c;
-  --yellow: #ffcc00;
-  --red: #d62828;
-  --white: #ffffff;
-  --black: #000000;
-}
-
+/* Reset Dasar */
 * {
   margin: 0;
   padding: 0;
@@ -23,16 +15,16 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: var(--blue);
+  background-color: #002f6c;
+  padding: 15px 0;
   z-index: 1000;
   transition: all 0.3s ease;
-  padding: 1rem 0;
 }
 
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,13 +39,8 @@ body {
 .hero {
   position: relative;
   height: 100vh;
-  min-height: 700px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  margin-top: -80px;
-  padding-top: 80px;
+  min-height: 600px;
+  margin-top: 70px;
 }
 
 .hero-video {
@@ -63,60 +50,38 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1;
-}
-
-.hero-logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  max-width: 300px;
 }
 
 .hero-content {
-  text-align: center;
-  color: var(--white);
+  position: relative;
   z-index: 2;
-  margin-top: 100px;
+  color: white;
+  text-align: center;
+  padding-top: 30vh;
 }
 
 .hero-content h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 2rem;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 /* Ticker */
 .ticker {
-  background-color: var(--yellow);
-  color: var(--black);
-  padding: 0.5rem 0;
+  background-color: #ffcc00;
+  color: black;
+  padding: 10px 0;
   overflow: hidden;
 }
 
-.ticker-content {
-  white-space: nowrap;
-  animation: ticker 20s linear infinite;
-}
-
-@keyframes ticker {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
-
-/* Responsive */
+/* Responsif */
 @media (max-width: 768px) {
-  .hero {
-    min-height: 600px;
-  }
-  
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    padding: 0 20px;
   }
   
-  .hero-logo {
-    max-width: 200px;
+  .header-logo {
+    height: 30px;
   }
 }
