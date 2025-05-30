@@ -83,3 +83,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+// Atur z-index untuk elemen yang bertumpuk
+window.addEventListener('load', function() {
+  const header = document.querySelector('.main-header');
+  const heroLogo = document.querySelector('.hero-logo-container');
+  const hero = document.querySelector('.hero');
+  
+  header.style.zIndex = '1000';
+  heroLogo.style.zIndex = '900';
+  hero.style.zIndex = '800';
+  
+  // Pastikan video hero dimulai
+  const bgVideo = document.getElementById('bgVideo');
+  bgVideo.play().catch(e => console.log('Autoplay prevented:', e));
+});
