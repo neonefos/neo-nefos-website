@@ -1,165 +1,72 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neo Nefos Movement</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="assets/image/icons/favicon.ico" />
-</head>
-<body>
+/* ===== Perbaikan Khusus ===== */
 
-  <!-- Logo besar (awal, sebelum scroll) -->
-  <div class="hero-logo-container">
-    <img src="assets/image/logo/logoneonefos.webp" alt="Logo Neo Nefos" class="hero-logo" />
-  </div>
+/* Hero Logo */
+.hero-logo-container {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding-top: 120px; /* Sesuaikan dengan tinggi header */
+}
 
-  <!-- Header Section -->
-<header class="main-header">
-  <!-- Logo dengan link ke homepage -->
-  <a href="index.html" class="logo-link">
-    <img src="assets/images/neo-nefos-logo.png" alt="Neo Nefos Movement Logo" class="logo">
-  </a>
+.hero-logo {
+  height: 150px;
+  margin: 0 auto;
+}
 
-  <!-- Navigasi Utama -->
-  <nav class="main-nav">
-    <!-- Menu Desktop -->
-    <ul class="nav-list desktop-menu">
-      <li class="nav-item">
-        <a href="gerakan.html" class="nav-link">GERAKAN</a>
-        <!-- Submenu untuk GERAKAN -->
-        <div class="submenu">
-          <a href="gerakan.html#seni" class="submenu-link">Seni</a>
-          <a href="gerakan.html#budaya" class="submenu-link">Budaya</a>
-          <a href="gerakan.html#teknologi" class="submenu-link">Teknologi</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a href="https://mandala.neonefos.com" class="nav-link">MANDALA</a>
-      </li>
-      <li class="nav-item">
-        <a href="https://forum.neonefos.com" class="nav-link">FORUM</a>
-      </li>
-      <li class="nav-item">
-        <a href="https://blog.neonefos.com" class="nav-link">BLOG</a>
-      </li>
-      <li class="nav-item">
-        <a href="tentang.html" class="nav-link">TENTANG</a>
-        <!-- Submenu untuk TENTANG -->
-        <div class="submenu">
-          <a href="tentang.html#kami" class="submenu-link">Kami</a>
-          <a href="tentang.html#poros" class="submenu-link">Poros Perlawanan</a>
-          <a href="tentang.html#dna" class="submenu-link">DNA Gerakan</a>
-          <a href="tentang.html#manifesto" class="submenu-link">Manifesto</a>
-        </div>
-      </li>
-      <li class="nav-item highlight">
-        <a href="bergabung.html" class="nav-link">BERGABUNG</a>
-      </li>
-      <li class="nav-item highlight">
-        <a href="donasi.html" class="nav-link">DONASI</a>
-      </li>
-      <li class="nav-item">
-        <a href="transparansi.html" class="nav-link">TRANSPARANSI</a>
-      </li>
-    </ul>
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  margin-top: -150px; /* Kompensasi logo besar */
+  z-index: 1;
+}
 
-    <!-- Toggle Menu Mobile -->
-    <button class="mobile-menu-toggle" aria-label="Toggle navigation">
-      <span class="toggle-bar"></span>
-      <span class="toggle-bar"></span>
-      <span class="toggle-bar"></span>
-    </button>
-  </nav>
-</header>
+.hero video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-  <!-- HERO -->
-  <section class="hero">
-    <video autoplay muted loop playsinline id="bgVideo" poster="assets/image/hero/fallback.webp">
-      <source src="assets/video/hero-1.webm" type="video/webm" />
-      <source src="assets/video/hero-2.webm" type="video/webm" />
-      <source src="assets/video/hero-3.webm" type="video/webm" />
-      <source src="assets/video/hero-4.webm" type="video/webm" />
-      <source src="assets/video/hero-5.webm" type="video/webm" />
-      <source src="assets/video/hero-1.mp4" type="video/mp4" />
-      <source src="assets/video/hero-2.mp4" type="video/mp4" />
-      <source src="assets/video/hero-3.mp4" type="video/mp4" />
-      <source src="assets/video/hero-4.mp4" type="video/mp4" />
-      <source src="assets/video/hero-5.mp4" type="video/mp4" />
-      <img src="assets/image/hero/fallback.webp" alt="Fallback Gambar">
-    </video>
-    <div class="hero-content">
-      <h1>GLOBAL SOLIDARITY FOR PEOPLE'S LIBERATION</h1>
-      <div class="hero-buttons">
-        <a href="#kontak" class="btn">Gabung</a>
-        <a href="#dukung" class="btn outline">Dukung</a>
-      </div>
-    </div>
-  </section>
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  padding-top: 30vh;
+}
 
-  <!-- TICKER -->
-  <section class="ticker">
-    <div class="ticker-text">
-      <span>#BersamaNefos • Seni Melawan Ketimpangan • Solidaritas Global South •</span>
-    </div>
-  </section>
+/* Ticker */
+.ticker {
+  position: relative;
+  z-index: 100;
+  background: var(--kuning-nefos);
+  padding: 15px 0;
+  overflow: hidden;
+}
 
-  <!-- SECTION EKOSISTEM -->
-  <section class="section-block light">
-    <div class="content-wrapper">
-      <h2>Ekosistem Kami</h2>
-      <p>Gerakan kami mencakup seni, budaya, teknologi, dan solidaritas rakyat.</p>
-      <a href="https://mandala.neonefos.com" class="btn">Lihat Mandala</a>
-    </div>
-  </section>
+/* Section Spacing */
+.section-block {
+  padding: 80px 0;
+  position: relative;
+}
 
-  <!-- HIGHLIGHT -->
-  <section class="section-block white">
-    <div class="content-wrapper">
-      <h2>Karya Terkini</h2>
-      <div class="highlight-grid">
-        <div class="highlight-item">
-          <img src="assets/image/gallery/mural-terbaru.webp" alt="Mural Solidaritas" loading="lazy" />
-          <h3>Mural "Global South Bersatu"</h3>
-          <a href="galeri.html" class="btn-small">Lihat Detail</a>
-        </div>
-        <div class="highlight-item">
-          <img src="assets/image/gallery/tshirt-fundraiser.webp" alt="Kaos Fundraiser" loading="lazy" />
-          <h3>Kaos "Bebaskan Palestina"</h3>
-          <a href="https://store.neonefos.com" class="btn-small">Beli Sekarang</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- KONTAK -->
-  <section class="section-block dark" id="kontak">
-    <div class="content-wrapper">
-      <h2>Kontak Kami</h2>
-      <p>Ingin terlibat atau berdiskusi?</p>
-      <a href="mailto:neonefosmovement@gmail.com" class="btn">Email Kami</a>
-      <a href="https://wa.me/628123456789" class="btn">WhatsApp</a>
-    </div>
-  </section>
-
-  <!-- DUKUNG -->
-  <section class="section-block yellow" id="dukung">
-    <div class="content-wrapper">
-      <h2>Dukung Gerakan</h2>
-      <p>Bentuk solidaritasmu berarti besar bagi kami.</p>
-      <a href="https://donasi.neonefos.com" class="btn">Donasi Sekarang</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="content-wrapper">
-      <p>&copy; 2025 Neo Nefos Movement. Lisensi Bebas Bertanggung Jawab.</p>
-      <p><a href="manifesto.html">Manifesto</a> | <a href="zine.html">Zine</a> | <a href="transparansi.html">Akuntabilitas</a></p>
-    </div>
-  </footer>
-
-  <!-- JS -->
-  <script src="js/script.js"></script>
-</body>
-</html>
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .hero-logo {
+    height: 100px;
+  }
+  
+  .hero {
+    min-height: 500px;
+    margin-top: -100px;
+  }
+  
+  .hero-content {
+    padding-top: 25vh;
+  }
+}
