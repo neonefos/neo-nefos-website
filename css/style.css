@@ -1,462 +1,122 @@
-/* === style.css untuk Neo Nefos Landing Page === */
-
+/* Reset & Variabel */
 :root {
-  --biru-nefos: #002f6c;
-  --kuning-nefos: #ffcc00;
-  --merah-nefos: #d62828;
-  --hijau-nefos: #4caf50;
-  --putih: #ffffff;
-  --hitam: #000000;
-  --abu: #f4f4f4;
+  --blue: #002f6c;
+  --yellow: #ffcc00;
+  --red: #d62828;
+  --white: #ffffff;
+  --black: #000000;
 }
 
-/* Reset dasar */
-body, html {
+* {
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
-  font-family: 'Montserrat', sans-serif;
-  background-color: var(--putih);
+  box-sizing: border-box;
 }
 
-/* ===== Gaya Header Utama ===== */
+body {
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Header */
 .main-header {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  padding: 1rem 2rem;
+  background-color: var(--blue);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  padding: 1rem 0;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(0, 47, 108, 0.9); /* Biru Neo Nefos dengan transparansi */
-  z-index: 1000;
+}
+
+.header-logo {
+  height: 40px;
   transition: all 0.3s ease;
-}
-
-/* Header saat di-scroll */
-.main-header.scrolled {
-  background-color: rgba(0, 47, 108, 1); /* Lebih solid saat di-scroll */
-  padding: 0.5rem 2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Logo */
-.logo {
-  height: 35px; /* Ukuran awal */
-  transition: all 0.3s ease;
-}
-
-.main-header.scrolled .logo {
-  height: 25px; /* Ukuran lebih kecil saat di-scroll */
-}
-
-/* Navigasi Utama */
-.nav-list {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-}
-
-.nav-item {
-  position: relative;
-  margin: 0 0.8rem;
-}
-
-.nav-link {
-  color: white;
-  text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 0.9rem;
-  padding: 0.5rem 0;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-/* Garis bawah saat hover */
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: white;
-  transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* Item menu khusus (BERGABUNG, DONASI) */
-.nav-item.highlight .nav-link {
-  background-color: #d62828; /* Merah Neo Nefos */
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-.nav-item.highlight .nav-link:hover {
-  background-color: #ff3333;
-  transform: translateY(-2px);
-}
-
-/* Submenu */
-.submenu {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  background-color: #ffcc00; /* Kuning Neo Nefos */
-  border-radius: 4px;
-  padding: 0.5rem;
-  min-width: 150px;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.nav-item:hover .submenu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
-
-.submenu-link {
-  display: block;
-  color: #000;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: background-color 0.2s ease;
-}
-
-.submenu-link:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-/* Garis merah dekoratif di bawah submenu */
-.submenu::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 2px;
-  background-color: #d62828; /* Merah Neo Nefos */
-}
-
-/* ===== Responsive Design - Mobile Menu ===== */
-.mobile-menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-.toggle-bar {
-  display: block;
-  width: 25px;
-  height: 2px;
-  background-color: white;
-  margin: 5px 0;
-  transition: all 0.3s ease;
-}
-
-/* Media Query untuk Tablet dan Mobile */
-@media (max-width: 992px) {
-  .desktop-menu {
-    display: none;
-  }
-  
-  .mobile-menu-toggle {
-    display: block;
-  }
-  
-  /* Menu mobile saat aktif */
-  .nav-list.mobile-active {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background-color: #002f6c;
-    flex-direction: column;
-    padding: 1rem 0;
-    align-items: flex-start;
-  }
-  
-  .nav-list.mobile-active .nav-item {
-    margin: 0;
-    width: 100%;
-  }
-  
-  .nav-list.mobile-active .nav-link {
-    display: block;
-    padding: 1rem 2rem;
-    width: 100%;
-  }
-  
-  /* Submenu di mobile */
-  .nav-list.mobile-active .submenu {
-    position: static;
-    transform: none;
-    opacity: 1;
-    visibility: visible;
-    background-color: rgba(255, 255, 255, 0.1);
-    width: 100%;
-    box-shadow: none;
-    display: none;
-  }
-  
-  .nav-list.mobile-active .nav-item:hover .submenu {
-    display: block;
-  }
-  
-  .nav-list.mobile-active .submenu::after {
-    display: none;
-  }
-  
-  /* Animasi toggle button */
-  .mobile-menu-toggle.active .toggle-bar:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-  }
-  
-  .mobile-menu-toggle.active .toggle-bar:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .mobile-menu-toggle.active .toggle-bar:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-  }
-}
-
-/* Navigasi */
-.main-nav ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 24px;
-  align-items: center;
-}
-
-.main-nav a {
-  color: var(--putih);
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px 12px;
-  transition: border-bottom 0.2s ease;
-  position: relative;
-}
-
-.main-nav a:hover::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 10px;
-  right: 10px;
-  height: 2px;
-  background: var(--putih);
-}
-
-/* Dropdown */
-.dropdown {
-  position: relative;
-}
-.dropdown-box {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: var(--kuning-nefos);
-  border-bottom: 4px solid var(--merah-nefos);
-  min-width: 160px;
-  z-index: 1001;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  animation: fadeSlide 0.3s ease;
-}
-
-.dropdown:hover .dropdown-box {
-  display: flex;
-  flex-direction: column;
-}
-.dropdown-box a {
-  color: var(--hitam);
-  padding: 10px 16px;
-  text-decoration: none;
-  transition: background 0.2s ease;
-}
-.dropdown-box a:hover {
-  background: rgba(0,0,0,0.1);
-  text-decoration: underline;
-}
-
-/* Hero Section */
-.hero {
-  height: 454px; /* 120mm */
-  position: relative;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.hero video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  color: var(--putih);
-  padding-top: 100px;
-}
-
-.hero-content h1 {
-  font-size: 36px;
-  font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 1px;
-}
-
-.btn {
-  margin-top: 16px;
-  padding: 12px 24px;
-  background: var(--kuning-nefos);
-  color: var(--hitam);
-  font-weight: bold;
-  border-radius: 4px;
-  text-decoration: none;
-}
-
-/* Ticker */
-.ticker {
-  height: 57px; /* 15mm */
-  background: var(--kuning-nefos);
-  color: var(--hitam);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-
-.ticker-text {
-  white-space: nowrap;
-  animation: ticker-scroll 20s linear infinite;
-  font-size: 18px;
-  padding-left: 100%;
-}
-
-@keyframes ticker-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-
-@keyframes fadeSlide {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsif */
-@media (max-width: 768px) {
-  .main-nav ul {
-    flex-direction: column;
-    background: var(--biru-nefos);
-  }
-  .hero-logo {
-    height: 100px;
-  }
-  .logo-small {
-    height: 32px;
-  }
-  .hero-content h1 {
-    font-size: 28px;
-  }
-}
-/* ===== Perbaikan Khusus ===== */
-
-/* Hero Logo */
-.hero-logo-container {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  padding-top: 120px; /* Sesuaikan dengan tinggi header */
-}
-
-.hero-logo {
-  height: 150px;
-  margin: 0 auto;
 }
 
 /* Hero Section */
 .hero {
   position: relative;
   height: 100vh;
-  min-height: 600px;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  margin-top: -150px; /* Kompensasi logo besar */
-  z-index: 1;
+  margin-top: -80px;
+  padding-top: 80px;
 }
 
-.hero video {
+.hero-video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: -1;
+}
+
+.hero-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  max-width: 300px;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  color: white;
   text-align: center;
-  padding-top: 30vh;
+  color: var(--white);
+  z-index: 2;
+  margin-top: 100px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 /* Ticker */
 .ticker {
-  position: relative;
-  z-index: 100;
-  background: var(--kuning-nefos);
-  padding: 15px 0;
+  background-color: var(--yellow);
+  color: var(--black);
+  padding: 0.5rem 0;
   overflow: hidden;
 }
 
-/* Section Spacing */
-.section-block {
-  padding: 80px 0;
-  position: relative;
+.ticker-content {
+  white-space: nowrap;
+  animation: ticker 20s linear infinite;
 }
 
-/* Mobile Adjustments */
+@keyframes ticker {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .hero-logo {
-    height: 100px;
-  }
-  
   .hero {
-    min-height: 500px;
-    margin-top: -100px;
+    min-height: 600px;
   }
   
-  .hero-content {
-    padding-top: 25vh;
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-logo {
+    max-width: 200px;
   }
 }
