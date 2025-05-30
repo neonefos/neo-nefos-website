@@ -5,63 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Neo Nefos Movement</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="assets/image/icons/favicon.ico">
+  <link rel="icon" href="assets/images/icons/favicon.ico">
+  <style>
+    /* CSS sementara untuk perbaikan darurat */
+    body { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
+    .main-header { position: fixed; top: 0; width: 100%; background: #002f6c; padding: 15px 0; z-index: 1000; }
+    .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+    .header-logo { height: 40px; }
+    .hero { height: 100vh; position: relative; margin-top: 70px; }
+    .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-content { position: relative; z-index: 2; color: white; text-align: center; padding-top: 30vh; }
+    .ticker { background: #ffcc00; color: black; padding: 10px 0; overflow: hidden; }
+  </style>
 </head>
 <body>
-  <!-- Header Baru -->
+  <!-- Header Sederhana -->
   <header class="main-header">
     <div class="header-container">
-      <a href="index.html" class="logo-link">
-        <img src="assets/image/logo/logoneonefos.webp" alt="Neo Nefos" class="header-logo">
+      <a href="index.html">
+        <img src="assets/images/logo/logoneonefos.webp" alt="Neo Nefos" class="header-logo">
       </a>
-      
-      <nav class="main-nav">
-        <ul class="nav-list">
-          <li class="nav-item"><a href="gerakan.html" class="nav-link">GERAKAN</a></li>
-          <li class="nav-item"><a href="https://mandala.neonefos.com" class="nav-link">MANDALA</a></li>
-          <li class="nav-item"><a href="https://forum.neonefos.com" class="nav-link">FORUM</a></li>
-          <li class="nav-item"><a href="https://blog.neonefos.com" class="nav-link">BLOG</a></li>
-          <li class="nav-item"><a href="tentang.html" class="nav-link">TENTANG</a></li>
-          <li class="nav-item highlight"><a href="bergabung.html" class="nav-link">BERGABUNG</a></li>
-          <li class="nav-item highlight"><a href="donasi.html" class="nav-link">DONASI</a></li>
-        </ul>
+      <nav>
+        <a href="bergabung.html" style="color: white; margin-left: 20px; text-decoration: none;">BERGABUNG</a>
       </nav>
-      
-      <button class="mobile-menu-toggle" aria-label="Menu">
-        <span class="toggle-bar"></span>
-        <span class="toggle-bar"></span>
-        <span class="toggle-bar"></span>
-      </button>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section Minimalis -->
   <section class="hero">
-    <div class="hero-logo">
-      <img src="assets/image/logo/logoneonefos.webp" alt="Neo Nefos">
-    </div>
-    
     <video autoplay muted loop playsinline class="hero-video">
-      <source src="assets/video/hero-1.mp4" type="video/mp4">
-      <img src="assets/image/hero/fallback.webp" alt="Neo Nefos Hero">
+      <source src="assets/videos/hero-1.mp4" type="video/mp4">
+      <img src="assets/images/hero/fallback.webp" alt="Neo Nefos">
     </video>
-    
     <div class="hero-content">
       <h1>GLOBAL SOLIDARITY FOR PEOPLE'S LIBERATION</h1>
-      <div class="hero-buttons">
-        <a href="#join" class="btn btn-primary">Gabung</a>
-        <a href="#support" class="btn btn-secondary">Dukung</a>
-      </div>
     </div>
   </section>
 
-  <!-- Ticker -->
+  <!-- Ticker Sederhana -->
   <div class="ticker">
-    <div class="ticker-content">
-      #BersamaNefos • Seni Melawan Ketimpangan • Solidaritas Global South •
-    </div>
+    <div>#BersamaNefos • Seni Melawan Ketimpangan • Solidaritas Global South •</div>
   </div>
 
-  <!-- Sisa konten... -->
+  <script>
+    // Pastikan video berjalan
+    document.querySelector('.hero-video').play().catch(e => console.log('Autoplay prevented'));
+  </script>
 </body>
 </html>
